@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdeaFlow | Decentralized Innovation</title>
+    <!-- This line connects the CSS file. It must match the exact filename -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Include Marked.js to parse the markdown challenges -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <header class="container header">
+        <div class="logo-group">
+            <h1>IdeaFlow</h1>
+            <p class="muted">A decentralized platform for community-driven ideas.</p>
+        </div>
+        <button id="connectWalletBtn" class="btn btn-primary">Connect Wallet</button>
+    </header>
+
+    <main class="container">
+        <section class="hero card">
+            <h2>Ideas, owned by the community.</h2>
+            <p>Submit and vote on ideas through a blockchain smart contract deployed on Sepolia.</p>
+        </section>
+
+        <!-- Workshop Challenges Section -->
+        <section class="card">
+            <h3>Workshop Challenges</h3>
+            <p class="muted" style="margin-bottom: 1rem; font-size: 0.875rem;">Progress through the tasks to upgrade
+                your dApp.</p>
+
+            <div class="challenge-tabs" id="challengeTabs">
+                <button class="btn btn-outline" data-file="README.md">Intro</button>
+                <button class="btn btn-outline" data-file="level-1.md">Level 1</button>
+                <button class="btn btn-outline" data-file="level-2.md">Level 2</button>
+                <button class="btn btn-outline" data-file="level-3.md">Level 3</button>
+                <button class="btn btn-outline" data-file="level-4.md">Level 4</button>
+            </div>
+
+            <div id="challengeContent" class="challenge-content">
+                <p class="muted">Select a challenge level above to view instructions.</p>
+            </div>
+        </section>
+
+        <section class="card connection-grid">
+            <div>
+                <label for="contractAddress">Contract Address</label>
+                <input id="contractAddress" type="text" placeholder="0x... your deployed IdeaFlow contract">
+            </div>
+            <button id="connectContractBtn" class="btn btn-primary">Connect Contract</button>
+            <div class="status-stack">
+                <p id="networkStatus" class="status muted">Network: Not connected</p>
+                <p id="walletStatus" class="status muted">Wallet: Connect your wallet to continue.</p>
+                <p id="contractStatus" class="status muted">Contract: Enter your deployed IdeaFlow contract address.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h3>Create Idea</h3>
+            <form id="ideaForm" class="form-grid">
+                <div>
+                    <label for="ideaTitle">Title</label>
+                    <input id="ideaTitle" type="text" maxlength="120" required>
+                </div>
+                <div>
+                    <label for="ideaDescription">Description</label>
+                    <textarea id="ideaDescription" rows="4" maxlength="500" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Idea</button>
+            </form>
+            <p id="txStatus" class="status muted"></p>
+        </section>
+
+        <section class="card">
+            <div class="ideas-header">
+                <h3>Ideas</h3>
+                <button id="refreshIdeasBtn" class="btn btn-outline">Refresh</button>
+            </div>
+            <div id="ideasList" class="ideas-list">
+                <p class="muted">Connect your wallet and contract to load ideas.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container footer muted">
+        <p>Built for the decentralized community</p>
+        <p>Sepolia testnet only. Do not use real funds.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+    <script src="abi.js"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
